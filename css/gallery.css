@@ -1,0 +1,119 @@
+/* Стили для новой галереи */
+.gallery-wrap {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.gallery-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font: 400 14px 'Montserrat', sans-serif;
+  transition: all 0.3s;
+}
+
+.tab-btn:hover, .tab-btn.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+}
+
+.gallery-grid {
+  display: grid;
+  /* Для больших экранов (ПК) - 5 колонок */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.gallery-item {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #3A4A5C;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.load-more-wrap {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Lightbox (Всплывающее окно) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lb-img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.lb-close, .lb-prev, .lb-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 40px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 10px;
+}
+
+.lb-close:hover, .lb-prev:hover, .lb-next:hover { color: var(--orange); }
+.lb-close { top: 20px; right: 30px; }
+.lb-prev { left: 20px; font-size: 60px; }
+.lb-next { right: 20px; font-size: 60px; }
+
+/* Адаптив галереи */
+@media(max-width: 960px) {
+  /* Для планшетов - 4 колонки */
+  .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+}
+
+@media(max-width: 600px) {
+  /* Для телефонов - 3 колонки (как в Instagram) */
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .tab-btn { padding: 6px 12px; font-size: 13px; }
+  .lb-prev { left: 5px; font-size: 40px; }
+  .lb-next { right: 5px; font-size: 40px; }
+}
