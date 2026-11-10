@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Подключаем стили -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/gallery.css">
 </head>
@@ -79,6 +78,7 @@
       <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Devis gratuit</li>
     </ul>
     <p class="hero-note rv">Votre projet est entre de bonnes mains!</p>
+    
     <div class="hero-cta rv">
       <a href="tel:0753388248" class="btn btn-primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12 19.79 19.79 0 011 3.18 2 2 0 013 1h3a2 2 0 012 1.72c.13 1 .36 1.97.71 2.9a2 2 0 01-.45 2.11L7.09 8.91A16 16 0 0015 16.91l1.27-1.27a2 2 0 012.11-.45c.93.35 1.9.58 2.9.71A2 2 0 0122 16.92z"/></svg>
@@ -90,6 +90,18 @@
       </a>
       <a href="#services" class="btn btn-secondary">Nos services</a>
     </div>
+
+    <!-- Новый блок с адресом -->
+    <div class="hero-location rv d1">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      <div>
+        <strong>Zone d’intervention :</strong><br>
+        <a href="https://www.google.com/maps/place/Loire-Atlantique,+France/" target="_blank" rel="noopener noreferrer">
+          Nantes et l’ensemble du département de la Loire-Atlantique (44)
+        </a>
+      </div>
+    </div>
+    
   </div>
   <div class="hero-img-col">
     <img src="images/foto.jpg" alt="Travaux de carrelage – ON Carrelage Groupe">
@@ -163,7 +175,6 @@
       <defs>
         <polygon id="hx" points="0,-74 64.1,-37 64.1,37 0,74 -64.1,37 -64.1,-37"/>
       </defs>
-      <!-- Шестиугольники оставлены без изменений -->
       <use href="#hx" class="hc"     transform="translate(0,80)"/>
       <use href="#hx" class="hc"     transform="translate(139,80)"/>
       <use href="#hx" class="hc"     transform="translate(278,80)"/>
@@ -203,22 +214,21 @@
   </div>
 </div>
 
-<!-- НОВАЯ ГАЛЕРЕЯ (Вместо старого слайдера) -->
 <section class="portfolio" id="portfolio">
   <div class="port-head">
     <h2 class="s-title">Nos <span>réalisations</span></h2>
   </div>
   
   <div class="gallery-wrap">
-    <!-- Кнопки фильтров -->
+    <!-- Обновленные вкладки -->
     <div class="gallery-tabs" id="galleryTabs">
       <button class="tab-btn active" data-cat="all">Tous</button>
-      <button class="tab-btn" data-cat="salles-de-bain">Salles de bain</button>
-      <button class="tab-btn" data-cat="terrasses">Terrasses</button>
-      <button class="tab-btn" data-cat="facades">Façades</button>
+      <button class="tab-btn" data-cat="carrelage">Carrelage</button>
+      <button class="tab-btn" data-cat="parquet">Parquet</button>
+      <button class="tab-btn" data-cat="terasses">Terrasses</button>
     </div>
 
-    <!-- Сетка с фото (будет заполняться из JS) -->
+    <!-- Сетка -->
     <div class="gallery-grid" id="galleryGrid"></div>
 
     <!-- Кнопка Показать еще -->
@@ -228,7 +238,7 @@
   </div>
 </section>
 
-<!-- Всплывающее окно для фото (Lightbox) -->
+<!-- Всплывающее окно -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose">&times;</button>
   <button class="lb-prev" id="lbPrev">&lsaquo;</button>
@@ -243,7 +253,6 @@
   <div class="avis-wrap">
     <div class="avis-vp">
       <div class="avis-track" id="avisTrack">
-        <!-- Карточки отзывов -->
         <div class="avis-card">
           <p class="avis-quote">On a fait refaire le carrelage de la cuisine et de l'entrée. Franchement le résultat est top, ça change complètement la pièce. Travail propre et personne sympa, je recommande.</p>
           <div class="avis-foot">
@@ -305,7 +314,6 @@
   </div>
 </div>
 
-<!-- Подключаем скрипты -->
 <script src="js/main.js"></script>
 <script src="js/gallery.js"></script>
 </body>

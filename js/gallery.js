@@ -1,20 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  // 1. ГЕНЕРИРУЕМ 100 ФОТО ИЗ 11 СУЩЕСТВУЮЩИХ (ДЛЯ ДЕМОНСТРАЦИИ)
-  const baseImages = ['ex1.png','ex2.png','ex3.png','ex4.png','ex5.png','ex6.png','ex7.png','ex8.png','ex9.png','ex10.png','ex11.png'];
-  const categories = ['salles-de-bain', 'terrasses', 'facades'];
+  // 1. ЗАГРУЖАЕМ НАШИ 45 ФОТОГРАФИЙ ИЗ ПАПОК
   const galleryData = [];
   
-  for (let i = 0; i < 100; i++) {
-    galleryData.push({
-      src: `images/${baseImages[i % baseImages.length]}`,
-      // Раскидываем фотки по случайным категориям для примера
-      category: categories[i % categories.length]
-    });
+  // Carrelage - 19 фото
+  for (let i = 1; i <= 19; i++) {
+    galleryData.push({ src: `images/carrelage/${i}.webp`, category: 'carrelage' });
+  }
+  
+  // Parquet - 10 фото
+  for (let i = 1; i <= 10; i++) {
+    galleryData.push({ src: `images/parquet/${i}.webp`, category: 'parquet' });
+  }
+  
+  // Terasses - 16 фото
+  for (let i = 1; i <= 16; i++) {
+    galleryData.push({ src: `images/terasses/${i}.webp`, category: 'terasses' });
   }
 
   // 2. НАСТРОЙКИ ГАЛЕРЕИ
-  const itemsPerPage = 15; // Сколько фоток показывать за раз
+  const itemsPerPage = 15; // Сколько фоток подгружать за один клик "Показать еще"
   let currentCategory = 'all';
   let currentIndex = 0;
   let filteredData = [...galleryData];
@@ -28,20 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const toRender = filteredData.slice(currentIndex, currentIndex + itemsPerPage);
     
     toRender.forEach((item, index) => {
+      // ИСПРАВЛЕНИЕ ОШИБКИ: Запоминаем точный индекс конкретно этой фотографии до обновления currentIndex
+      const absoluteIndex = currentIndex + index; 
+      
       const div = document.createElement('div');
       div.className = 'gallery-item rv';
       
       const img = document.createElement('img');
       img.src = item.src;
-      img.loading = 'lazy'; // Фотки грузятся только когда до них докрутят!
+      img.loading = 'lazy'; 
       
-      // Клик для открытия модалки
-      div.addEventListener('click', () => openLightbox(currentIndex + index));
+      // Передаем правильный абсолютный индекс в модалку
+      div.addEventListener('click', () => openLightbox(absoluteIndex));
       
       div.appendChild(img);
       grid.appendChild(div);
       
-      // Запускаем анимацию появления
       setTimeout(() => div.classList.add('on'), 50);
     });
 
@@ -58,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function filterGallery(category) {
     currentCategory = category;
     currentIndex = 0;
-    grid.innerHTML = ''; // Очищаем старые фотки
+    grid.innerHTML = ''; 
     
     if (category === 'all') {
       filteredData = [...galleryData];
@@ -69,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGallery();
   }
 
-  // Клик по вкладкам
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -78,10 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Клик по "Показать еще"
   loadMoreBtn.addEventListener('click', () => renderGallery());
 
-  // Инициализация при запуске
+  // Запуск при открытии сайта
   filterGallery('all');
 
 
@@ -98,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLbIndex = index;
     updateLightboxImg();
     lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Убираем скролл сайта
+    document.body.style.overflow = 'hidden'; 
   }
 
   function closeLightbox() {

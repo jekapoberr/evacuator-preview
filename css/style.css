@@ -62,6 +62,37 @@ a{text-decoration:none;color:inherit}
 .btn-secondary{background:transparent;color:var(--blue);border-color:var(--blue)}
 .btn-secondary:hover{background:var(--blue);color:var(--white)}
 
+/* Стили для региона под кнопками */
+.hero-location {
+  margin-top: 28px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--blue);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.hero-location svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.hero-location strong {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+.hero-location a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: var(--orange);
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+.hero-location a:hover {
+  color: var(--orange);
+}
+
 .hero-text-col::before{
   content:'';
   position:absolute;inset:0;z-index:0;pointer-events:none;
